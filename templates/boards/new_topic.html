@@ -1,0 +1,21 @@
+{% extends 'boards/base_boards.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Ouvrir un nouveau sujet{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'accueil' %}">Table des matières</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a></li>
+  <li class="breadcrumb-item active">Nouveau sujet</li>
+{% endblock %}
+
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {% include 'boards/includes/form.html' %}
+
+    <button type="submit" class="btn btn-success">Publier</button>
+  </form>
+{% endblock %}
+

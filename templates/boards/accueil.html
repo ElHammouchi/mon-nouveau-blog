@@ -1,0 +1,49 @@
+{% extends 'boards/base_boards.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">Table des matières</li>
+{% endblock %}
+
+{% block content %}
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Travaux collaboratifs</th>
+        <th>Contributions</th>
+        <th>Sujets abordés</th>
+        <th>Consultations</th>
+        <th>Dernière publication</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for board in boards %}
+        <tr>
+          <td>
+            <a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a>
+            <small class="text-muted d-block">{{ board.description }}</small>
+          </td>
+          <td class="align-middle">
+            {{ board.get_posts_count }}
+          </td>
+          <td class="align-middle">
+            {{ board.topics.count }}
+          </td>
+          <td>{{ topic.views }}</td>
+          <td class="align-middle">
+            {% with post=board.get_last_post %}
+              {% if post %}
+              <small> <a href="{% url 'topic_posts' board.pk post.topic.pk %}">
+              de {{ post.created_by.username }} le {{ post.created_at }}</a>
+              </small>
+              {% else %}
+              <small class="text-muted"><em>Toujours pas de post</em></small>
+              {% endif %}
+            {% endwith %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+
