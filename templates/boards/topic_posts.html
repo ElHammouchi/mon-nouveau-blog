@@ -5,7 +5,7 @@
 {% block title %}{{ topic.subject }}{% endblock %}
 
 {% block breadcrumb %}
-  <li class="breadcrumb-item"><a href="{% url 'accueil' %}">Table des matières</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'accueil' %}">Liste des formations</a></li>
   <li class="breadcrumb-item"><a href="{% url 'board_topics' topic.board.pk %}">{{ topic.board.name }}</a></li>
   <li class="breadcrumb-item active">{{ topic.subject }}</li>
 {% endblock %}

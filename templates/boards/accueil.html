@@ -1,16 +1,16 @@
 {% extends 'boards/base_boards.html' %}
 
 {% block breadcrumb %}
-  <li class="breadcrumb-item active">Table des matières</li>
+  <li class="breadcrumb-item active">Les types de formations postbac des anciens de l'Anno</li>
 {% endblock %}
 
 {% block content %}
   <table class="table">
     <thead class="thead-inverse">
       <tr>
-        <th>Travaux collaboratifs</th>
+        <th>Formations postbac</th>
+        <th>Parcours</th>
         <th>Contributions</th>
-        <th>Sujets abordés</th>
         <th>Consultations</th>
         <th>Dernière publication</th>
       </tr>
@@ -23,10 +23,10 @@
             <small class="text-muted d-block">{{ board.description }}</small>
           </td>
           <td class="align-middle">
-            {{ board.get_posts_count }}
+            {{ board.topics.count }}
           </td>
           <td class="align-middle">
-            {{ board.topics.count }}
+            {{ board.get_posts_count }}
           </td>
           <td>{{ topic.views }}</td>
           <td class="align-middle">
