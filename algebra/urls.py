@@ -21,4 +21,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('', include('boards.urls')),
     path('', include('accounts.urls')),
+    path('', include('cal.urls')),
+    path('', include('events.urls')),
+    path('', include('event_management.urls')),
 ]

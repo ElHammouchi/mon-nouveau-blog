@@ -4,7 +4,7 @@ from django.test import TestCase
 from ..forms import SignUpForm
 from ..views import signup
 
-
+ 
 class SignUpTests(TestCase):
     def setUp(self):
         url = reverse('signup')

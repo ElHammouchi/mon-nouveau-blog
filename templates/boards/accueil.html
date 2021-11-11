@@ -1,18 +1,21 @@
 {% extends 'boards/base_boards.html' %}
-
+{% load static %}
 {% block breadcrumb %}
-  <li class="breadcrumb-item active">Les types de formations postbac des anciens de l'Anno</li>
-{% endblock %}
+  <li class="breadcrumb-item active">Echanges avec les anciens </li>
+  <li class="breadcrumb-item active">le 06/01/22 </a></li>
+  <li class="breadcrumb-item active">planification en cours...</a></li>
+{% endblock %} 
 
 {% block content %}
+{% if user.is_authenticated %}
   <table class="table">
     <thead class="thead-inverse">
       <tr>
-        <th>Formations postbac</th>
-        <th>Parcours</th>
-        <th>Contributions</th>
-        <th>Consultations</th>
-        <th>Dernière publication</th>
+        <th>Anciens</th><!-- Parcours-->
+        <th>Formations présentées</th><!-- Parcours-->
+        <th>Dates d'interventions</th><!-- Formation présentée-->
+        <th>Contacts</th><!-- Consultations-->
+        <th>Nombre d'intéressés</th><!-- Dernière publication-->
       </tr>
     </thead>
     <tbody>
@@ -44,6 +47,224 @@
       {% endfor %}
     </tbody>
   </table>
+
+
+
+{% if user.is_superuser or user.is_staff %}
+
+<div class="container">
+<table class="table">
+  <tr>
+  <td class="align-middle">
+
+<!-- CARTES ROTATIVES -->
+  <div class="card-container">
+         <div class="card">
+             <div class="front">
+                 <div class="cover">
+                     <img src="static/img/fond_flore.png"/>
+                 </div>
+                 <div class="user">
+                     <img class="img-circle" src="static/img/flore.png"/>
+                 </div>
+                 <div class="content">
+                     <div class="main">
+                         <h3 class="name">Flore A. </h3>
+                         <p class="profession">A intégré l'ENSAP de Bordeaux</p>
+
+                         <p class="text-center">Ecole Nationnale Supérieure d'Architecture et Paysage</p>
+                     </div>
+                     <div class="footer">
+                         <div class="rating">
+                             <i class="fa fa-mail-forward"></i> Promo 2019 - Bac scientifique
+                         </div>
+                     </div>
+                 </div>
+             </div> <!-- end front panel -->
+             <div class="back">
+                 <div class="header">
+                     <h5 class="motto">Etablissement publique</h5>
+                 </div>
+                 <div class="content">
+                     <div class="main">
+                         <h4 class="text-center">Formation sélective</h4>
+                         <p class="text-center">Etudes de paysage et de territoire • Médiation de l’architecture contemporaine • Design architectural et urbain </p>
+
+                         <div class="stats-container">
+                             <div class="stats">
+                                 <h4>90</h4>
+                                 <p>
+                                     Places
+                                 </p>
+                             </div>
+                             <div class="stats">
+                                 <h4>12%</h4>
+                                 <p>
+                                     de reçus
+                                 </p>
+                             </div>
+                             <div class="stats">
+                                 <h4>3</h4>
+                                 <p>
+                                     Formations
+                                 </p>
+                             </div>
+                         </div>
+
+                     </div>
+                 </div>
+                 <div class="footer">
+                     <div class="social-links text-center">
+                         <a href="#" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                         <a href="#" class="insta"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                         <a href="#" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                     </div>
+                 </div>
+             </div> <!-- end back panel -->
+         </div> <!-- end card -->
+     </div> <!-- end card-container 1-->
+  </td>
+
+  <td >
+  <div class="card-container">
+         <div class="card">
+             <div class="front">
+                 <div class="cover">
+                     <img src="static/img/fond_celine.png"/>
+                 </div>
+                 <div class="user">
+                     <img class="img-circle" src="static/img/tete3.jpg"/>
+                 </div>
+                 <div class="content">
+                     <div class="main">
+                         <h3 class="name">Céline M. </h3>
+                         <p class="profession">A intégré TSE</p>
+
+                         <p class="text-center">Toulouse School of Economics</p>
+                     </div>
+                     <div class="footer">
+                         <div class="rating">
+                             <i class="fa fa-mail-forward"></i> Promo 2019 - Bac économique
+                         </div>
+                     </div>
+                 </div>
+             </div> <!-- end front panel -->
+             <div class="back">
+                 <div class="header">
+                     <h5 class="motto">Etablissement publique</h5>
+                 </div>
+                 <div class="content">
+                     <div class="main">
+                         <h4 class="text-center">Formation non sélective</h4>
+                         <p class="text-center">Economie • Economie & Gestion • Economie & Droit • Maths Informatique Economie appliquées au Sc. Humaines & Sociales</p>
+
+                         <div class="stats-container">
+                             <div class="stats">
+                                 <h4>180</h4>
+                                 <p>
+                                     Places
+                                 </p>
+                             </div>
+                             <div class="stats">
+                                 <h4>72%</h4>
+                                 <p>
+                                     de reçus
+                                 </p>
+                             </div>
+                             <div class="stats">
+                                 <h4>4</h4>
+                                 <p>
+                                     Formations
+                                 </p>
+                             </div>
+                         </div>
+
+                     </div>
+                 </div>
+                 <div class="footer">
+                     <div class="social-links text-center">
+                         <a href="#" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                         <a href="#" class="insta"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                         <a href="#" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                     </div>
+                 </div>
+             </div> <!-- end back panel -->
+         </div> <!-- end card -->
+     </div> <!-- end card-container 2-->
+  </td>
+
+  <td >
+     <div class="card-container">
+         <div class="card">
+             <div class="front">
+                 <div class="cover">
+                     <img href="{% static 'img/pdp.gif' %}"/>
+                 </div>
+                 <div class="user">
+                     <img class="img-circle" href="{% static 'img/pdp.gif' %}"/>
+                 </div>
+                 <div class="content">
+                     <div class="main">
+                         <h3 class="name">Etc</h3>
+                         <p class="profession">Etc</p>
+
+                         <p class="text-center">Etc</p>
+                     </div>
+                     <div class="footer">
+                         <div class="rating">
+                             <i class="fa fa-mail-forward"></i> ...
+                         </div>
+                     </div>
+                 </div>
+             </div> <!-- end front panel -->
+             <div class="back">
+                 <div class="header">
+                     <h5 class="motto">...</h5>
+                 </div>
+                 <div class="content">
+                     <div class="main">
+                         <h4 class="text-center">...</h4>
+                         <p class="text-center">...</p>
+
+                         <div class="stats-container">
+                             <div class="stats">
+                                 <h4>?</h4>
+                                 <p>
+                                     ...
+                                 </p>
+                             </div>
+                             <div class="stats">
+                                 <h4>?</h4>
+                                 <p>
+                                     ...
+                                 </p>
+                             </div>
+                             <div class="stats">
+                                 <h4>?</h4>
+                                 <p>
+                                     ...
+                                 </p>
+                             </div>
+                         </div>
+
+                     </div>
+                 </div>
+                 <div class="footer">
+                     <div class="social-links text-center">
+                         <a href="https://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                         <a href="https://creative-tim.com" class="insta"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                         <a href="https://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                     </div>
+                 </div>
+             </div> <!-- end back panel -->
+         </div> <!-- end card -->
+     </div> <!-- end card-container 3-->
+  </td>
+  </tr>
+  </table>
+</div>
+{% endif %}
+{% endif %}
 {% endblock %}
 
 

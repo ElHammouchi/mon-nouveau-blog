@@ -54,8 +54,35 @@ html {
   width: device-width;
 }
 
-article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+article, 
+aside, 
+dialog, 
+figcaption, 
+figure, 
+footer, 
+header, 
+hgroup, 
+main, 
+nav, 
+section,
+summary {
   display: block;
+}
+
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden],
+template {
+  display: none;
 }
 
 body {
@@ -165,11 +192,18 @@ a {
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  background: transparent;
 }
 
+a:focus {
+  outline: thin dotted;
+}
+
+a:active,
 a:hover {
   color: #0056b3;
   text-decoration: underline;
+  outline: 0;
 }
 
 a:not([href]):not([tabindex]) {

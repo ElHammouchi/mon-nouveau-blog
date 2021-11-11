@@ -3,74 +3,74 @@
 <html>
     <head>
     <meta charset="utf-8">
-    <title>{% block title %}Principia{% endblock %}</title>
+    <title>{% block title %}Python{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
     {% block stylesheet %}{% endblock %}
-    
-    {% comment %}
-    <h3> ..relax : 
-    <audio src="{% static 'audio/in-the-mood.mp3' %}" controls autoplay loop></audio>
-    <video src="{% static 'video/in-the-mood.mp4' %}" controls autoplay loop></video>
-    </h3>
-    {% endcomment %}
+
     <!-- Markdown Editor-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
-        <!-- liaison JS - MATHS -->
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
-        $( function() {
-        $( "#tabs" ).tabs();
-        } );
-        $( function() {
-            $( "#accordion" )
-                 .accordion({
-                 header: "> div > h3",
-                 heightStyle: "content",
-                 })
-                 .sortable({
-                 axis: "y",
-                 handle: "h3",
-            stop: function( event, ui ) {
+    <!-- liaison JS - MATHS -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
+    <!-- Favicon -->
+
+  <!-- TP en accordéon-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" )
+      .accordion({
+        header: "> div > h3"
+      })
+      .sortable({
+        axis: "y",
+        handle: "h3",
+        stop: function( event, ui ) {
           // IE doesn't register the blur when sorting
           // so trigger focusout handlers to remove .ui-state-focus
-            ui.item.children( "h3" ).triggerHandler( "focusout" );
+          ui.item.children( "h3" ).triggerHandler( "focusout" );
  
           // Refresh accordion to handle new order
-            $( this ).accordion( "refresh" );
-            }
-        });
-        });
-        </script>
+          $( this ).accordion( "refresh" );
+        }
+      });
+  } );
+  </script>
+  <!-- FIN TP en accordéon-->
     </head>
 
 
 <body>
-
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      {% if user.is_authenticated %}
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'accueil' %}">La Cordée des Anciens</a>
+        <a class="navbar-brand" href="{% url 'accueil' %}">Actu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
       <div id="mainMenu" class="collapse navbar-collapse">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#">Seconde</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Première</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Terminale</a></li>
+          <li class="nav-item" color ="red"><a class="nav-link" href="/">   </a></li>
+          <li class="nav-item"><a class="nav-link" href="/ap">Calendrier</a></li>
         </ul>
       </div>
       <div class="collapse navbar-collapse" id="mainMenu">
+      {% if user.is_authenticated %}
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,26 +78,18 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
               <a class="dropdown-item" href="{% url 'my_account' %}">Compte</a>
-              <a class="dropdown-item" href="{% url 'password_change' %}">Mot de pass</a>
+              <a class="dropdown-item" href="{% url 'password_change' %}">Mot de passe</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'logout' %}">Déconnexion</a>
             </div>
           </li>
         </ul>
-      {% else %}
-        <form class="form-inline ml-auto">
-        <a href="/" class="btn btn-outline-secondary">Consultation en tant qu'invité </a>
-      {% comment %}
-          <a href="{% url 'login' %}" class="btn btn-outline-secondary">Connexion</a>
-          <a href="{% url 'signup' %}" class="btn btn-primary ml-2">Inscription</a>
-      {% endcomment %}
-        </form>
       {% endif %}
       </div>
     </div>
   </nav>
-</br></br>
 
+    {% if user.is_authenticated %}
     <main class="container">
         <div class="row">
             <div class="col">
@@ -107,21 +99,69 @@
         </div>
     </main>
 
+
+    <main class="container">
+        <div class="row">
+            <div class="col">
+            {% block content2 %}
+            {% endblock %}
+            </div>
+        </div>
+    
+
             {% block menu %}
             {% endblock %}
 
-   
-    <p class="container">
-    <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1omSt6uTjv5igNFs0J6uDjVtHQ58JbFOs-utXKul4RUY&amp;font=Default&amp;lang=en&amp;initial_zoom=2&amp;height=400'
-    width='100%' height='400' webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="allowfullscreen" frameborder='0'>
-    </iframe>
-    </p>
+ </main>
+    {% endif %}
+<div class="tabls">
+       <div class="tabl">
+          <input type="checkbox" id="chck1">
+          <label class="tabl-label" for="chck1">TP01 - Prise en main</label>
+          <div class="tabl-content">
+            <iframe height="1000px" width="100%" src="https://replit.com/@ELHAMMOUCHI/TP-01-Prise-en-main?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true"
+            sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals">
+            </iframe>
+          </div>
+       </div>
 
-    {% comment %}
-   Calendier annuel
-    <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1ZAFWrZ6UDEWOq7vNsb6HssgFIlv_O-ugz-R4iNPRpoU&font=Default&lang=en&initial_zoom=2&height=450'
-    width='90%' height='450' webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="allowfullscreen" frameborder='0'>
-    </iframe>
-   {% endcomment %}
+       <div class="tabl">
+          <input type="checkbox" id="chck2">
+          <label class="tabl-label" for="chck2">TP02 - Programmation décisionnelle</label>
+          <div class="tabl-content">
+          <iframe height="1000px" width="100%" src="https://replit.com/@ELHAMMOUCHI/TP02-Structures-decisionnelles?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true"
+            sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals">
+            </iframe>
+          </div>
+       </div>
+
+       <div class="tabl">
+          <input type="checkbox" id="chck3">
+          <label class="tabl-label" for="chck3">TP03 - Programmation itérative</label>
+          <div class="tabl-content">
+          <iframe height="1000px" width="100%" src="https://replit.com/@ELHAMMOUCHI/TP03-Programmation-iterative?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true"
+            sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals">
+            </iframe>
+          </div>
+       </div>
+
+       <div class="tabl">
+          <input type="checkbox" id="chck4">
+          <label class="tabl-label" for="chck4">TP04 - Programmation modulaire</label>
+          <div class="tabl-content">
+          <iframe height="1000px" width="100%" src="https://replit.com/@ELHAMMOUCHI/TP04-Programmation-modulaire?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true"
+            sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals">
+            </iframe>
+          </div>
+       </div>
+</div>
+
+
+     
+
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>
