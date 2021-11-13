@@ -22,5 +22,4 @@ urlpatterns = [
     path('', include('boards.urls')),
     path('', include('accounts.urls')),
     path('', include('cal.urls')),
-    path('', include('event_management.urls')),
 ]
