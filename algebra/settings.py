@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'betterforms', 
 
     # Local apps
-    'events.apps.EventsConfig',
+    #'events.apps.EventsConfig',
 ]
 
 
