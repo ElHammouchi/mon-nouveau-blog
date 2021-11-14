@@ -1,0 +1,19 @@
+body {
+  background-image: /*linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),*/
+                  url(../img/fond_2.gif);
+  background-position: center top;
+  background-size: 100% auto;
+}
+
+.logo {
+  font-family: 'Lobster', cursive;
+}
+
+.logo a {
+  color: rgba(0,0,0,.9);
+}
+
+.logo a:hover,
+.logo a:active {
+  text-decoration: none;
+}

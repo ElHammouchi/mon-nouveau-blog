@@ -11,8 +11,7 @@ venv/
 # Base de donnée
 db.sqlite3
 
-# Dossier "static" à la racine du projet
-/static/
+
 
 # macOS
 ._*
